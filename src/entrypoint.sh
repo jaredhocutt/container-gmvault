@@ -14,7 +14,8 @@ if [ $# = 0 ]; then
       gmvault sync \
         --db-dir ${GMVAULT_DIR} \
         --type ${GMVAULT_SYNC_TYPE} \
-        ${GMVAULT_OPTIONS} ${GMVAULT_EMAIL_ADDRESS} 2>&1
+        ${GMVAULT_OPTIONS} ${GMVAULT_EMAIL_ADDRESS} 2>&1 \
+        | tee -a ${GMVAULT_DIR}/gmvault_${GMVAULT_SYNC_TYPE}.log
 
       echo "Completed ${GMVAULT_SYNC_TYPE} sync of ${GMVAULT_EMAIL_ADDRESS}"
     else
@@ -25,7 +26,8 @@ if [ $# = 0 ]; then
       gmvault sync \
         --db-dir ${GMVAULT_DIR} \
         --type full \
-        ${GMVAULT_OPTIONS} ${GMVAULT_EMAIL_ADDRESS} 2>&1
+        ${GMVAULT_OPTIONS} ${GMVAULT_EMAIL_ADDRESS} 2>&1 \
+        | tee -a ${GMVAULT_DIR}/gmvault_full.log
 
       echo "Completed full sync of ${GMVAULT_EMAIL_ADDRESS}"
     fi
