@@ -53,8 +53,10 @@ if [ $# = 0 ]; then
       echo "An interactive shell was not detected."
       echo
       echo "By default, this container starts a bash shell, be sure you are passing '-it' to your run command."
+      echo
+      echo "Instead going to tail /dev/null to keep the container running"
 
-      exit 1
+      /usr/bin/tail -f /dev/null
     fi
   fi
 else
