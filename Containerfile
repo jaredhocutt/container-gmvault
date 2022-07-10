@@ -17,7 +17,7 @@ RUN yum install -y \
     python2 \
     python2-pip \
     && pip2 install --upgrade pip \
-    && pip2 install gmvault \
+    && pip2 install gmvault==1.9.1 \
     && yum clean all \
     && echo 'export PS1="\n\[\e[34m\]\u\[\e[m\] at \[\e[32m\]\h\[\e[m\] in \[\e[33m\]\w\[\e[m\] \[\e[31m\]\n\\$\[\e[m\] "' >> /root/.bashrc
 
