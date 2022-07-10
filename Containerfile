@@ -21,6 +21,9 @@ RUN yum install -y \
     && yum clean all \
     && echo 'export PS1="\n\[\e[34m\]\u\[\e[m\] at \[\e[32m\]\h\[\e[m\] in \[\e[33m\]\w\[\e[m\] \[\e[31m\]\n\\$\[\e[m\] "' >> /root/.bashrc
 
+# Patch to support large mailboxes
+RUN sed -i '/^import imaplib/a imaplib._MAXLINE = 10000000' $(find / -name 'imapclient.py')
+
 COPY src ./
 
 ENTRYPOINT ["/app/entrypoint.sh"]
